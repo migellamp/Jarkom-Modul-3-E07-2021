@@ -79,6 +79,7 @@ apt-get install isc-dhcp-server -y
 nano /etc/default/isc-dhcp-server
 ```
 - Lalu edit seperti gambar berikut,
+
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/3-7(a).png) <br />
 
 - Buka file berikut ini,
