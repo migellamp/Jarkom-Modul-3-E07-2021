@@ -77,7 +77,7 @@ Note : Dapat dilihat bahwa, saat akan mendownload file dengan format .jpg/.png m
 	delay_access 1 allow images
 	delay_parameters 1 1250/1250
 ```
-Keterangan:
+Keterangan:  <br/>
 	1. ```acl ZORO  proxy_auth zorobelikapale07``` -> menamai username zorobelikapale07 dengan variable ZORO  <br/>
 	2. ```delay_access 1 deny ZORO``` -> tidak menerapkan delay_parameters dan ketentuan file yang dibuat pada file ```acl-bandwidth.conf``` sehingga tidak berpengaruh pada 	user zoro  <br/>
 
