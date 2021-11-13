@@ -1,6 +1,64 @@
 # Jarkom-Modul-3-E07-2021
 Lapres Jaringan Komputer Modul 3 Kelompok E07
 
+## Soal 08 Loguetown digunakan sebagai client Proxy agar transaksi jual beli dapat terjamin keamanannya, juga untuk mencegah kebocoran data transaksi. Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.e07.com dengan port yang digunakan adalah 5000. 
+
+- Pertama setting DNS terlebih dahulu sehingga dns jualbelikapal.e07.com bisa menuju ip Water7 (192.203.2.3). Setting konfigurasi seperti berikut:
+```
+nano /etc/bind/kaizoku/e07.com
+```
+dan tambahkan:
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL 604800
+@ IN SOA e07.com. root.e07.com. (
+        2021102401      ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@               IN NS e07.com.
+@               IN A 192.203.2.3
+jualbelikapal   IN A 192.203.2.3
+```
+lalu pada: ``` nano /etc/bind/named.conf.local ```
+tambahkan:
+```
+zone "e07.com" {
+    type master;
+    file "/etc/bind/kaizoku/e07.com";
+};
+```
+Pindah pada node Water7, jalankan konfigurasi seperti berikut:
+```
+echo nameserver 192.203.2.2 > /etc/resolv.conf
+apt-get update
+apt-get install squid -y
+service squid restart
+service squid status
+mv /etc/squid/squid.conf /etc/squid/squid.conf.bak
+nano /etc/squid/squid.conf
+```
+lalu tambahkan konfigurasi sebagai berikut pada ../squid.conf:
+```
+http_port 5000
+visible_hostname Water7
+http_access allow all
+```
+lalu restart squid: ``` service squid restart ```
+Pindah pada node Loguetown, jalankan konfigurasi seperti berikut:
+```
+export http_proxy="http://jualbelikapal.e07.com:5000"
+env | grep -i proxy
+```
+Dan coba buka alamat web menggunakan browser lynx: ``` lynx http://its.ac.id ```
+Hasilnya sebagai berikut:
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08a.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08b.png) <br />
+
 ## Soal 11 : Melakukan redirect website. Setiap mengakses google.com, akan diredirect menuju super.franky.e07.com
 
 - Pertama, melakukan setup pada node skypie yang mana sama seperti soal-shift modul 2 kemaren pada no 11
