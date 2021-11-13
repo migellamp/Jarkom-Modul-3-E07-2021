@@ -34,7 +34,7 @@ Khusus untuk Skypie, tambahkan konfigurasi berikut di bawah konfigurasi sebelumn
 hwaddress ether 9e:9d:1c:75:bc:db
 ```
 
-##Soal 2
+## Soal 2
 - Pada router foosha, konfigurasi file di bawah ini :
 ```
 nano /etc/sysctl.conf
@@ -67,7 +67,7 @@ INTERFACES="eth1 eth2 eth3"
 service isc-dhcp-relay start
 ```
 
-##Soal 3,4,5,6,7
+## Soal 3,4,5,6,7
 - Install tools terlebih dahulu, 
 ```
 apt-get update
