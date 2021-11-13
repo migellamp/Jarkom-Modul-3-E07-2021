@@ -21,9 +21,9 @@ Lapres Jaringan Komputer Modul 3 Kelompok E07
   3. lynx google.com
 
 Output: <br/>
-![alt text](https:https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11a.jpg) <br />
-![alt text](https:https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11b.jpg) <br />
-![alt text](https:https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11c.jpg) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11a.jpg) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11b.jpg) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11c.jpg) <br />
 
 ## Soal 12 : Membatasi kecepatan User Luffy ketika mendownload gambar dengan kecepatan 10kbps
 
@@ -56,7 +56,7 @@ Keterangan:
   5. Mencoba mendownload file gambar pada asset yang terdapat pada web super.franky.e07
 
 Output: <br/>
-![alt text](https:https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/12.jpg) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/12.jpg) <br />
 
 ## Soal 13 : Zoro bebas mendownload apa saja dengan kecepatan yang bebas, tidak dibatasi
 
@@ -86,4 +86,4 @@ Keterangan:
   	5. Mencoba mendownload file gambar pada asset yang terdapat pada web super.franky.e07
 
 Output: <br/>
-![alt text](https:https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/13.jpg) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/13.jpg) <br />
