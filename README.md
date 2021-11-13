@@ -56,8 +56,8 @@ env | grep -i proxy
 ```
 Dan coba buka alamat web menggunakan browser lynx: ``` lynx http://its.ac.id ```
 Hasilnya sebagai berikut:
-![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08a.png) <br />
-![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08b.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08a-Fix.png) <br />
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08b-Fix.png) <br />
 
 ## Soal 11 : Melakukan redirect website. Setiap mengakses google.com, akan diredirect menuju super.franky.e07.com
 
