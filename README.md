@@ -1,6 +1,128 @@
 # Jarkom-Modul-3-E07-2021
 Lapres Jaringan Komputer Modul 3 Kelompok E07
 
+Buat topologi seperti di soal. Kemudian, konfigurasikan terlebih dahulu network interface masing-masing host.
+Pada router foosha, 
+```
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+	address 192.203.1.1
+	netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+	address 192.203.2.1
+	netmask 255.255.255.0
+
+auto eth3
+iface eth3 inet static
+	address 192.203.3.1
+	netmask 255.255.255.0
+```
+
+Pada host Loguetown, Alabasta, Skypie, TottoLand
+```
+auto eth0
+iface eth0 inet dhcp
+```
+
+Khusus untuk Skypie, tambahkan konfigurasi berikut di bawah konfigurasi sebelumnya,
+```
+hwaddress ether 9e:9d:1c:75:bc:db
+```
+
+##Soal 2
+- Pada router foosha, konfigurasi file di bawah ini :
+```
+nano /etc/sysctl.conf
+```
+
+- Lalu uncomment bagian ``net.ipv4.ip_forward=1``
+- Install dhcp relay,
+```
+apt-get update
+apt-get install isc-dhcp-relay -y
+```
+- Ketika diminta untuk input sesuatu saat proses instalasi, cukup skip dengan tekan Enter sampai prosesi selesai
+
+- Buka file di bawah ini,
+```
+nano /etc/default/isc-dhcp-relay
+```
+
+- Edit pada bagian ini ,
+```
+# What servers should the DHCP relay forward requests to?
+SERVERS="192.203.2.4"
+
+# On what interfaces should the DHCP relay (dhrelay) serve DHCP requests?
+INTERFACES="eth1 eth2 eth3"
+```
+
+- Restart/start dhcp relay dengan command, 
+```
+service isc-dhcp-relay start
+```
+
+##Soal 3,4,5,6,7
+- Install tools terlebih dahulu, 
+```
+apt-get update
+apt-get install isc-dhcp-server -y
+```
+
+- Buka file berikut ini,
+```
+nano /etc/default/isc-dhcp-server
+```
+- Lalu edit seperti gambar berikut,
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/3-7(a).png) <br />
+
+- Buka file berikut ini,
+```
+nano /etc/dhcp/dhcpd.conf
+```
+- Lalu tambahkan konfigurasi BERIKUT INI di bagian paling bawah file, 
+```
+subnet 192.203.2.0 netmask 255.255.255.0 {
+        option routers 192.203.2.1;		#SETTING SUPAYA BISA RELAY KE FOOSHA
+        default-lease-time 360;
+        max-lease-time 7200;
+}
+subnet 192.203.1.0 netmask 255.255.255.0 {
+    range 192.203.1.20 192.203.1.99;		#no 3
+    range 192.203.1.150 192.203.1.169;		#no 3
+    option routers 192.203.1.1;
+    option broadcast-address 192.203.1.255;
+    option domain-name-servers 192.203.2.2;	#no 5
+    default-lease-time 360;			#no 6
+    max-lease-time 7200;			#no 6
+}
+subnet 192.203.3.0 netmask 255.255.255.0 {
+    range 192.203.3.30 192.203.3.50;		#no 4
+    option routers 192.203.3.1;
+    option broadcast-address 192.203.3.255;
+    option domain-name-servers 192.203.2.2;	#no 5
+    default-lease-time 720;			#no 6
+    max-lease-time 7200;			#no 6
+}	
+host Skypie {					#konfig no 7
+    hardware ethernet 9e:9d:1c:75:bc:db;
+    fixed-address 192.203.3.69;
+}
+```
+
+- Restart dhcp,
+```
+service isc-dhcp-server restart
+```
+
+- Testing pada masing-masing host dengan cara cek ip ``ip a`` serta cek koneksi internet ``ping google.com``
+
+
 ## Soal 08: Loguetown digunakan sebagai client Proxy agar transaksi jual beli dapat terjamin keamanannya, juga untuk mencegah kebocoran data transaksi. Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.e07.com dengan port yang digunakan adalah 5000. 
 
 - Pertama setting DNS terlebih dahulu sehingga dns jualbelikapal.e07.com bisa menuju ip Water7 (192.203.2.3). Setting konfigurasi seperti berikut:
