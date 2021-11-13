@@ -25,6 +25,8 @@ Output: <br/>
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11b.jpg) <br />
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/11c.jpg) <br />
 
+Note : Dapat dilihat bahwa, saat mengunjungi google.com maka akan langsung diteruskan ke super.franky.e07
+
 ## Soal 12 : Membatasi kecepatan User Luffy ketika mendownload gambar dengan kecepatan 10kbps
 
 - Pertama, Membuat sebuah file configurasi bernama ```acl-bandwidth.conf``` dan memasukkan query berikut
@@ -58,6 +60,8 @@ Keterangan:
 Output: <br/>
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/12.jpg) <br />
 
+Note : Dapat dilihat bahwa, saat akan mendownload file dengan format .jpg/.png maka kecepatan LUFFY dibatasi
+
 ## Soal 13 : Zoro bebas mendownload apa saja dengan kecepatan yang bebas, tidak dibatasi
 
 - Pertama, Menambahkan sebuah query pada file configurasi yaitu  ```acl-bandwidth.conf```
@@ -87,3 +91,5 @@ Keterangan:
 
 Output: <br/>
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/13.jpg) <br />
+
+Note : Dapat dilihat bahwa, saat ZORO akan mendownload file maka kecepatannya tidak dibatasi dan langsung selesai mendownloadn
