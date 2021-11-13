@@ -42,12 +42,12 @@ Note : Dapat dilihat bahwa, saat mengunjungi google.com maka akan langsung diter
 	delay_access 1 allow images
 	delay_parameters 1 1250/1250
 ```
-Keterangan:
-	1. ```auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd``` -> membaca password dari user yang dibuat
-	2. ```acl LUFFY proxy_auth luffybelikapale07``` -> menamai username luffybelikapale07 dengan variable LUFFY
-	3. ```delay_access 1 allow LUFFY``` -> menerapkan konfigurasi yang telah dibuat
-	4. ```acl images url_regex -i \.jpg$ \.png$``` -> menggunakan regex untuk mencari file dengan format dicari
-	5. ```delay_parameters 1 1250/1250``` -> digunakan untuk membatasi kecepatan yaitu 10kbps
+Keterangan: <br/>
+	1. ```auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd``` -> membaca password dari user yang dibuat <br/>
+	2. ```acl LUFFY proxy_auth luffybelikapale07``` -> menamai username luffybelikapale07 dengan variable LUFFY <br/>
+	3. ```delay_access 1 allow LUFFY``` -> menerapkan konfigurasi yang telah dibuat <br/>
+	4. ```acl images url_regex -i \.jpg$ \.png$``` -> menggunakan regex untuk mencari file dengan format dicari <br/>
+	5. ```delay_parameters 1 1250/1250``` -> digunakan untuk membatasi kecepatan yaitu 10kbps <br/>
 
 - Selanjutnya, Mengedit file ```squid.conf``` dengan memasukkan ```include /etc/squid/acl-bandwidth.conf``` agar file configurasi diatas dapat terbaca pada proxy
 - Langkah Selanjutnya tinggal di jalankan pada node Loguetown  dengan cara:
@@ -78,8 +78,8 @@ Note : Dapat dilihat bahwa, saat akan mendownload file dengan format .jpg/.png m
 	delay_parameters 1 1250/1250
 ```
 Keterangan:
-	1. ```acl ZORO  proxy_auth zorobelikapale07``` -> menamai username zorobelikapale07 dengan variable ZORO
-	2. ```delay_access 1 deny ZORO``` -> tidak menerapkan delay_parameters dan ketentuan file yang dibuat pada file ```acl-bandwidth.conf``` sehingga tidak berpengaruh pada 	user zoro
+	1. ```acl ZORO  proxy_auth zorobelikapale07``` -> menamai username zorobelikapale07 dengan variable ZORO  <br/>
+	2. ```delay_access 1 deny ZORO``` -> tidak menerapkan delay_parameters dan ketentuan file yang dibuat pada file ```acl-bandwidth.conf``` sehingga tidak berpengaruh pada 	user zoro  <br/>
 
 - Selanjut, Mengedit file ```squid.conf``` dengan memasukkan ```include /etc/squid/acl-bandwidth.conf``` agar file configurasi diatas dapat terbaca pada proxy
 - Langkah Selanjutnya tinggal di jalankan pada node Loguetown  dengan cara:
