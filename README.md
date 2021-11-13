@@ -59,6 +59,46 @@ Hasilnya sebagai berikut:
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08a-Fix.png) <br />
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08b-Fix.png) <br />
 
+## Agar transaksi jual beli lebih aman dan pengguna website ada dua orang, proxy dipasang autentikasi user proxy dengan enkripsi MD5 dengan dua username, yaitu luffybelikapale07 dengan password luffy_e07 dan zorobelikapale07 dengan password zoro_e07.
+
+Pada node Water7 jalankan perintah berikut:
+```
+apt-get update
+apt-get install apache2-utils -y
+htpasswd -b -c -m /etc/squid/passwd luffybelikapale07 luffy_e07
+htpasswd -b -m /etc/squid/passwd zorobelikapale07 zoro_e07
+```
+Perintah htpasswd berfungsi untuk membuat user denga password pada file ../passwd, flag -c berfungsi untuk menandakan "create" pembuatan awal file dan flag -m untuk menandakan password disimpan dengan enkripsi md5.
+
+Lalu edit file ../squid.conf dan ubah konfigurasi.
+```
+mv /etc/squid/squid.conf /etc/squid/squid.conf.bak
+nano /etc/squid/squid.conf
+```
+
+Konfigurasi menjadi
+```
+http_port 5000
+visible_hostname Water7
+
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access allow USERS
+```
+Lalu restart squid: ``` service squid restart ```
+
+Cek apakah user dan password sudah dibuat dengan command: ``` cat /etc/squid/passwd ```
+Hasil
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/09a.png) <br />
+Maka pada Loguetown, ketika kita akan membuka suatu situs dengan lynx. Juga akan dimintai username dan password proxy.
+
+Hasil
+![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/09b.png) <br />
+
 ## Soal 11 : Melakukan redirect website. Setiap mengakses google.com, akan diredirect menuju super.franky.e07.com
 
 - Pertama, melakukan setup pada node skypie yang mana sama seperti soal-shift modul 2 kemaren pada no 11
