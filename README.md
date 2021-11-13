@@ -99,6 +99,39 @@ Maka pada Loguetown, ketika kita akan membuka suatu situs dengan lynx. Juga akan
 Hasil
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/09b.png) <br />
 
+## Soal 10: Transaksi jual beli tidak dilakukan setiap hari, oleh karena itu akses internet dibatasi hanya dapat diakses setiap hari Senin-Kamis pukul 07.00-11.00 dan setiap hari Selasa-Jum’at pukul 17.00-03.00 keesokan harinya (sampai Sabtu pukul 03.00).
+
+Buka file ../acl.conf
+```
+nano /etc/squid/acl.conf
+```
+Lalu tambahkan konfigurasi sebagai berikut. Untuk mengatur waktu yang diperbolehkan oleh proxy server (sesuai dengan soal):
+```
+acl AVAILABLE_WORKING1 time MTWH 07:00-11:00
+acl AVAILABLE_WORKING2 time TWHF 17:00-23:59
+acl AVAILABLE_WORKING3 time WHFA 00:00-03:00
+```
+Lalu buka file ../squid.conf: ``` nano /etc/squid/squid.conf ```
+Dan tambahkan konfigurasi berikut ini:
+```
+include /etc/squid/acl.conf
+http_port 5000
+visible_hostname Water7
+
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Proxy
+auth_param basic credentialsttl 2 hours
+auth_param basic casesensitive on
+acl USERS proxy_auth REQUIRED
+http_access allow USERS AVAILABLE_WORKING1
+http_access allow USERS AVAILABLE_WORKING2
+http_access allow USERS AVAILABLE_WORKING3
+http_access deny all
+```
+Lalu restart squid: ``` service squid restart ```
+
+
 ## Soal 11 : Melakukan redirect website. Setiap mengakses google.com, akan diredirect menuju super.franky.e07.com
 
 - Pertama, melakukan setup pada node skypie yang mana sama seperti soal-shift modul 2 kemaren pada no 11
