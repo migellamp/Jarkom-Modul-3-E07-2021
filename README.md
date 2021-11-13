@@ -1,7 +1,7 @@
 # Jarkom-Modul-3-E07-2021
 Lapres Jaringan Komputer Modul 3 Kelompok E07
 
-## Soal 08 Loguetown digunakan sebagai client Proxy agar transaksi jual beli dapat terjamin keamanannya, juga untuk mencegah kebocoran data transaksi. Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.e07.com dengan port yang digunakan adalah 5000. 
+## Soal 08: Loguetown digunakan sebagai client Proxy agar transaksi jual beli dapat terjamin keamanannya, juga untuk mencegah kebocoran data transaksi. Pada Loguetown, proxy harus bisa diakses dengan nama jualbelikapal.e07.com dengan port yang digunakan adalah 5000. 
 
 - Pertama setting DNS terlebih dahulu sehingga dns jualbelikapal.e07.com bisa menuju ip Water7 (192.203.2.3). Setting konfigurasi seperti berikut:
 ```
@@ -59,7 +59,7 @@ Hasilnya sebagai berikut:
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08a-Fix.png) <br />
 ![alt text](https://github.com/migellamp/Jarkom-Modul-3-E07-2021/blob/main/images/08b-Fix.png) <br />
 
-## Agar transaksi jual beli lebih aman dan pengguna website ada dua orang, proxy dipasang autentikasi user proxy dengan enkripsi MD5 dengan dua username, yaitu luffybelikapale07 dengan password luffy_e07 dan zorobelikapale07 dengan password zoro_e07.
+## Soal 09: Agar transaksi jual beli lebih aman dan pengguna website ada dua orang, proxy dipasang autentikasi user proxy dengan enkripsi MD5 dengan dua username, yaitu luffybelikapale07 dengan password luffy_e07 dan zorobelikapale07 dengan password zoro_e07.
 
 Pada node Water7 jalankan perintah berikut:
 ```
